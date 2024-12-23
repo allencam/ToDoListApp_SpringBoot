@@ -2,19 +2,17 @@ package com.allencam.ToDoListApp.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "tasks")
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int task_id;
+    private int taskId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private int user_id;
+    private User user;
 
     @Column(nullable = false)
     private String title;
@@ -23,33 +21,33 @@ public class Task {
 
     private int priority;
 
-    private LocalDateTime deadline;
+    private String deadline;
 
     public Task() {}
 
-    public Task(int task_id, int user_id, String title, String description, int priority, LocalDateTime deadline) {
-        this.task_id = task_id;
-        this.user_id = user_id;
+    public Task(int taskId, User user, String title, String description, int priority, String deadline) {
+        this.taskId = taskId;
+        this.user = user;
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.deadline = deadline;
     }
 
-    public int getTask_id() {
-        return task_id;
+    public int getTaskId() {
+        return taskId;
     }
 
-    public void setTask_id(int task_id) {
-        this.task_id = task_id;
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTitle() {
@@ -76,19 +74,19 @@ public class Task {
         this.priority = priority;
     }
 
-    public LocalDateTime getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(LocalDateTime deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
     @Override
     public String toString() {
         return "Task{" +
-               "task_id=" + task_id +
-               ", user_id=" + user_id +
+               "taskId=" + taskId +
+               ", user_id=" + user +
                ", title='" + title + '\'' +
                ", description='" + description + '\'' +
                ", priority=" + priority +

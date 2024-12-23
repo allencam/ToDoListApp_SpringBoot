@@ -8,31 +8,31 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    private int userId;
 
     @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
-    private String hashed_password;
+    private String hashedPassword;
 
     private String role;
 
     public User() {}
 
-    public User(String role, String hashed_password, String username, int user_id) {
+    public User(String role, String hashedPassword, String username, int userId) {
         this.role = role;
-        this.hashed_password = hashed_password;
+        this.hashedPassword = hashedPassword;
         this.username = username;
-        this.user_id = user_id;
+        this.userId = userId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -43,12 +43,12 @@ public class User {
         this.username = username;
     }
 
-    public String getHashed_password() {
-        return hashed_password;
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
-    public void setHashed_password(String hashed_password) {
-        this.hashed_password = hashed_password;
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
     public String getRole() {
@@ -62,9 +62,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-               "user_id=" + user_id +
+               "userId=" + userId +
                ", username='" + username + '\'' +
-               ", hashed_password='" + hashed_password + '\'' +
+               ", hashedPassword='" + hashedPassword + '\'' +
                ", role='" + role + '\'' +
                '}';
     }

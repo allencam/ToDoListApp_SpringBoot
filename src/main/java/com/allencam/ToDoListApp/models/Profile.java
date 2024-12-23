@@ -1,39 +1,51 @@
 package com.allencam.ToDoListApp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "profiles")
 public class Profile {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int profileId;
+
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private int userId;
+    private User user;
 
+    @Column(nullable = false)
     private String firstName;
 
+    @Column(nullable = false)
     private String lastName;
 
-    private String image_url;
+    private String imageUrl;
 
     public Profile() {}
 
-    public Profile(int user_id, String firstName, String lastName, String image_url) {
-        this.userId = user_id;
+    public Profile(int profileId, User user, String firstName, String lastName, String imageUrl) {
+        this.profileId = profileId;
+        this.user = user;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
     }
 
-    public int getUser_id() {
-        return userId;
+    public int getProfileId() {
+        return profileId;
     }
 
-    public void setUser_id(int userId) {
-        this.userId = userId;
+    public void setProfileId(int profileId) {
+        this.profileId = profileId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getFirstName() {
@@ -52,21 +64,21 @@ public class Profile {
         this.lastName = lastName;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
     public String toString() {
         return "Profile{" +
-               "user_id=" + userId +
+               "user_id=" + user +
                ", firstName='" + firstName + '\'' +
                ", lastName='" + lastName + '\'' +
-               ", image_url='" + image_url + '\'' +
+               ", imageUrl='" + imageUrl + '\'' +
                '}';
     }
 }
