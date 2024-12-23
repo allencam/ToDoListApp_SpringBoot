@@ -4,11 +4,8 @@ import com.allencam.ToDoListApp.data.TaskRepository;
 import com.allencam.ToDoListApp.data.TaskRepositoryCustom;
 import com.allencam.ToDoListApp.models.Task;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 @RestController
@@ -27,5 +24,10 @@ public class TaskController {
     @GetMapping
     public List<Task> getAll() {
         return taskRepository.findAll();
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable int id) {
+        taskRepository.deleteById(id);
     }
 }
