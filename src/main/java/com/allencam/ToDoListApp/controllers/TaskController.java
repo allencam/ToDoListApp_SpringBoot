@@ -26,6 +26,11 @@ public class TaskController {
         return taskRepository.findAll();
     }
 
+    @GetMapping("{id}")
+    public Task getById(@PathVariable int id) {
+        return taskRepository.getById(id);
+    }
+
     @DeleteMapping("{id}")
     public void deleteById(@PathVariable int id) {
         taskRepository.deleteById(id);
